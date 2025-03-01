@@ -8,6 +8,7 @@ using ThalesApi.Domain.DB;
 using ThalesApi.HttpRequest;
 using ThalesApi.Utils;
 using ThalesApi.Interfaces;
+using Newtonsoft.Json.Linq;
 
 namespace ThalesApi.Controllers
 {
@@ -29,6 +30,8 @@ namespace ThalesApi.Controllers
         [HttpPost("[Action]")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
+            // Catch errors are caught by the GlobalExceptionHandler class
+
             if (string.IsNullOrEmpty(request.username) || string.IsNullOrEmpty(request.password))
                 return new BadRequestObjectResult(new { success = false, data = "El usuario y/o contraseña estan vacios" });
 
@@ -38,12 +41,13 @@ namespace ThalesApi.Controllers
 
             var pass = Encrypt.MD5(request.password);
 
-            //Tiempo de Token
-            var expiration_date = Globals.SystemDate().AddHours(5).AddHours(8);//8 horas de vida para el token
+            //Token Time
+            var expiration_date = Globals.SystemDate().AddHours(5).AddHours(8);//8 hours of life for the token
+
             var jwtHelper = new JWTHelper(this._configuration.GetValue<string>("SecurityKey"));
             var token = jwtHelper.CreateToken(request.username, expiration_date);
 
-            //Validamos la sesion
+            //validate the session
             var _sesion = _context.sesiones
                 .Where(x => x.UserId == user.UserId)
                 .FirstOrDefault();

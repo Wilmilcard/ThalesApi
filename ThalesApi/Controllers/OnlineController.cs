@@ -22,6 +22,7 @@ namespace ThalesApi.Controllers
         [HttpGet("[Action]")]
         public async Task<IActionResult> GetProductsFromApi()
         {
+            // Catch errors are caught by the GlobalExceptionHandler class
             var response = await _httpClient.GetAsync(_apiUrl);
             if (!response.IsSuccessStatusCode)
                 return StatusCode((int)response.StatusCode, "Error al obtener los productos");
@@ -35,6 +36,8 @@ namespace ThalesApi.Controllers
         [HttpGet("[Action]/{id}")]
         public async Task<IActionResult> GetProductsFromApi(int id)
         {
+            // Catch errors are caught by the GlobalExceptionHandler class
+
             var response = await _httpClient.GetAsync($"{_apiUrl}/{id}");
             if (!response.IsSuccessStatusCode)
                 return StatusCode((int)response.StatusCode, "Error al obtener los productos");

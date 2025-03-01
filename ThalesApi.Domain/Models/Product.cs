@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ThalesApi.Domain.Models
 {
-    public class Product
+    public class Product : Auditory
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -19,8 +19,6 @@ namespace ThalesApi.Domain.Models
         public int price { get; set; }
         public string description { get; set; }
         public List<string> images { get; set; }
-        public DateTime creationAt { get; set; }
-        public DateTime updatedAt { get; set; }
 
         public int categoryId { get; set; }
         public virtual Category category { get; set; }

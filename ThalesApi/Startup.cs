@@ -1,4 +1,7 @@
-﻿using ThalesApi.Domain;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using ThalesApi.Domain;
 
 namespace ThalesApi
 {
@@ -25,29 +28,29 @@ namespace ThalesApi
 
             // Crear variables y servicios de BD
             builder.Services.AddCustomizedDataStore(config);
-            //builder.Services.AddCustomizedServicesProject();
+            builder.Services.AddCustomizedServicesProject();
             builder.Services.AddCustomizedRepository();
 
             //Global Exceptions
             //builder.Services.AddTransient<GlobalExceptionHandler>();
 
             //Authenticathion API
-            //builder.Services.AddAuthentication(auth =>
-            //{
-            //    auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //}).AddJwtBearer(jwt =>
-            //{
-            //    jwt.RequireHttpsMetadata = false;
-            //    jwt.SaveToken = true;
-            //    jwt.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config.GetValue<string>("SecurityKey"))),
-            //        ValidateIssuer = false,
-            //        ValidateAudience = false
-            //    };
-            //});
+            builder.Services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(jwt =>
+            {
+                jwt.RequireHttpsMetadata = false;
+                jwt.SaveToken = true;
+                jwt.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config.GetValue<string>("SecurityKey"))),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             builder.Services.AddControllers();
 

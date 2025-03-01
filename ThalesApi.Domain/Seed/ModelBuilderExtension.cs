@@ -59,6 +59,20 @@ namespace ThalesApi.Domain.Seed
                 modelBuilder.Entity<Product>().HasData(p);
             #endregion
 
+            #region Users
+            id = 1;
+            var fakerUser = new Bogus.Faker<User>()
+                .RuleFor(x => x.UserId, f => id++)
+                .RuleFor(x => x.Username, f => "Juan")
+                .RuleFor(x => x.PasswordHash, f => Encrypt.MD5("1234"))
+                .RuleFor(x => x.creationAt, f => fecha)
+                .RuleFor(x => x.updatedAt, f => fecha);
+
+            var listUsers = fakerUser.Generate(1);
+            foreach (var u in listUsers)
+                modelBuilder.Entity<User>().HasData(u);
+            #endregion
+
         }
     }
 }

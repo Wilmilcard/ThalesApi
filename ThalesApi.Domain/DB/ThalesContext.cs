@@ -21,7 +21,9 @@ namespace ThalesApi.Domain.DB
 
         public DbSet<Category> categories { get; set; }
         public DbSet<Product> products { get; set; }
-        
+        public DbSet<User> usuarios { get; set; }
+        public DbSet<Sesion> sesiones { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Seed();

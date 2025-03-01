@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace ThalesApi.Domain.Models
 {
-    public class Category : Auditory
+    [Table("User")]
+    public class User : Auditory
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [Column("id")]
-        public int id { get; set; }
-        public string name { get; set; }
-        public string slug { get; set; }
-        public string image { get; set; }
+        [Column("UserId")]
+        public int UserId { get; set; }
+
+        [Column("Username")]
+        [StringLength(50)]
+        public string Username { get; set; }
+
+        [Column("PasswordHash")]
+        [StringLength(600)]
+        public string PasswordHash { get; set; }
     }
 }

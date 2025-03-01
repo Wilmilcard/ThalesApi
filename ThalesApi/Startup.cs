@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ThalesApi.Domain;
+using ThalesApi.Utils;
 
 namespace ThalesApi
 {
@@ -26,6 +27,7 @@ namespace ThalesApi
         {
             var config = builder.Configuration;
 
+            //Consumo de servicios externos
             builder.Services.AddHttpClient();
 
             // Crear variables y servicios de BD
@@ -34,7 +36,7 @@ namespace ThalesApi
             builder.Services.AddCustomizedRepository();
 
             //Global Exceptions
-            //builder.Services.AddTransient<GlobalExceptionHandler>();
+            builder.Services.AddTransient<GlobalExceptionHandler>();
 
             //Authenticathion API
             builder.Services.AddAuthentication(auth =>
@@ -69,7 +71,7 @@ namespace ThalesApi
                 app.UseSwaggerUI();
             }
 
-            //app.UseMiddleware<GlobalExceptionHandler>();
+            app.UseMiddleware<GlobalExceptionHandler>();
 
             app.UseHttpsRedirection();
 

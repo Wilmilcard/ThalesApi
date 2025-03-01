@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85 d17.13
+VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThalesApi", "ThalesApi\ThalesApi.csproj", "{5996A11F-FFD5-4589-B2C8-7B3B66A9A40C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThalesApi.Domain", "ThalesApi.Domain\ThalesApi.Domain.csproj", "{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5996A11F-FFD5-4589-B2C8-7B3B66A9A40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5996A11F-FFD5-4589-B2C8-7B3B66A9A40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5996A11F-FFD5-4589-B2C8-7B3B66A9A40C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

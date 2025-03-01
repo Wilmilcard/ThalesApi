@@ -26,6 +26,8 @@ namespace ThalesApi
         {
             var config = builder.Configuration;
 
+            builder.Services.AddHttpClient();
+
             // Crear variables y servicios de BD
             builder.Services.AddCustomizedDataStore(config);
             builder.Services.AddCustomizedServicesProject();

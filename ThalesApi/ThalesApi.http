@@ -1,0 +1,6 @@
+@ThalesApi_HostAddress = http://localhost:5030
+
+GET {{ThalesApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

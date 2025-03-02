@@ -9,6 +9,7 @@ using ThalesApi.Services;
 
 namespace ThalesApi.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class OnlineController : ControllerBase

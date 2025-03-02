@@ -82,7 +82,7 @@ It is the unit testing project that tests the method that calculates the taxes
 
 # 🔥 Project execution
 
-Para que el proyecto funcione correctamente se debe de tener instalado:
+For the project to work correctly you must have installed:
 
 - IDE (Visual Studio 2022)
 - Sql Server (optional)

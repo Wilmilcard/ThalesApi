@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThalesApi", "ThalesApi\Thal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThalesApi.Domain", "ThalesApi.Domain\ThalesApi.Domain.csproj", "{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThalesApi.Test", "ThalesApi.Test\ThalesApi.Test.csproj", "{EBEB1C5D-AB21-4825-80EE-6759B2B89A4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCF9A5E0-DF26-49FE-B2D9-1639016A51BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEB1C5D-AB21-4825-80EE-6759B2B89A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEB1C5D-AB21-4825-80EE-6759B2B89A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEB1C5D-AB21-4825-80EE-6759B2B89A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEB1C5D-AB21-4825-80EE-6759B2B89A4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,3 @@
-# ThalesApi
-
 <p align="center">
     <h3 align="center">Juan David Leon Barrera</h3>
 	<p align="center">
@@ -49,6 +47,10 @@ It has 3 layers:
 Where are
 
 - the controllers
+	- There are 3 controllers:
+		- **AuthController**: which is responsible for verifying the authentication of users to consume the API
+		- **LocalController**: Consumes the local database, it is optional and is not vital for its operation
+		- **OnlineController**: The controller that resolves the test request 
 - the business logic
 - the http request for post requests
 - the http response to map the responses of the external service

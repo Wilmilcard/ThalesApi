@@ -108,8 +108,8 @@ If you want, you can run the application locally by creating a database and runn
 
 - It is possible to consume the API through GET. I will leave the list of urls where you can bring information
     - Online Controller
-        - Bring all products: **[https://localhost:44336/api/Online/GetProductsFromDB](https://localhost:44336/api/Online/GetProductsFromApi)**
-        - Find by Id product: **[https://localhost:44336/api/Online/GetProductsFromDB/55](https://localhost:44336/api/Online/GetProductByIdFromApi/4)**
+        - Bring all products: **[https://localhost:44336/api/Online/GetProductsFromApi](https://localhost:44336/api/Online/GetProductsFromApi)**
+        - Find by Id product: **[https://localhost:44336/api/Online/GetProductByIdFromApi/55](https://localhost:44336/api/Online/GetProductByIdFromApi/4)**
     - Local Controller
         - Bring all products: **[https://localhost:44336/api/Local/GetProductsFromDB](https://localhost:44336/api/Local/GetProductsFromDB)**
         - Find by Id product: **[https://localhost:44336/api/Local/GetProductsFromDB/55](https://localhost:44336/api/Local/GetProductsFromDB/55)**

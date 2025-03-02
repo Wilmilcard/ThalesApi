@@ -23,7 +23,14 @@ namespace ThalesApi.Services
 
         public async Task<Product?> GetProductByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<Product>($"{_apiUrl}/{id}");
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<Product>($"{_apiUrl}/{id}");
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

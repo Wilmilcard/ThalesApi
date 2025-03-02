@@ -71,6 +71,11 @@ namespace ThalesApi
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseMiddleware<GlobalExceptionHandler>();
 
             app.UseHttpsRedirection();

@@ -2,7 +2,10 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using ThalesApi.BLL;
 using ThalesApi.Domain.Models;
+using ThalesApi.Interfaces;
+using ThalesApi.Services;
 
 namespace ThalesApi.Controllers
 {
@@ -10,42 +13,47 @@ namespace ThalesApi.Controllers
     [ApiController]
     public class OnlineController : ControllerBase
     {
-        private readonly HttpClient _httpClient;
-        private readonly string _apiUrl;
+        private readonly IProductBusiness _business;
 
-        public OnlineController(HttpClient httpClient, IConfiguration configuration)
+        public OnlineController(IProductBusiness business)
         {
-            _httpClient = httpClient;
-            _apiUrl = configuration["ApiSettings:ExternalApi"]; 
+            _business = business;
         }
 
         [HttpGet("[Action]")]
         public async Task<IActionResult> GetProductsFromApi()
         {
-            // Catch errors are caught by the GlobalExceptionHandler class
-            var response = await _httpClient.GetAsync(_apiUrl);
-            if (!response.IsSuccessStatusCode)
-                return StatusCode((int)response.StatusCode, "Error al obtener los productos");
-
-            var content = await response.Content.ReadAsStringAsync();
-            var products = JsonSerializer.Deserialize<List<Product>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-            return Ok(products);
+            try
+            {
+                var products = await _business.GetProductsAsync();
+                return Ok(products);
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, $"Error en la API externa: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno: {ex.Message}");
+            }
         }
 
         [HttpGet("[Action]/{id}")]
-        public async Task<IActionResult> GetProductsFromApi(int id)
+        public async Task<IActionResult> GetProductByIdFromApi(int id)
         {
-            // Catch errors are caught by the GlobalExceptionHandler class
-
-            var response = await _httpClient.GetAsync($"{_apiUrl}/{id}");
-            if (!response.IsSuccessStatusCode)
-                return StatusCode((int)response.StatusCode, "Error al obtener los productos");
-
-            var content = await response.Content.ReadAsStringAsync();
-            var products = JsonSerializer.Deserialize<Product>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-            return Ok(products);
+            try
+            {
+                var product = await _business.GetProductByIdAsync(id);
+                return product != null ? Ok(product) : NotFound($"Producto con ID {id} no encontrado.");
+            }
+            catch (HttpRequestException ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, $"Error en la API externa: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error interno: {ex.Message}");
+            }
         }
     }
 }
